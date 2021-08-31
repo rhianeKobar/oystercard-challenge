@@ -29,7 +29,7 @@ describe Oystercard do
     expect{ subject.top_up(1) }.to raise_error("Maximum balance of #{max_capacity} exceeded")
   end 
 
-  it 'should repsond to #deduct' do 
+  it 'should respond to #deduct' do 
     oyster = Oystercard.new 
     expect(oyster).to respond_to(:deduct).with(1).argument 
   end 
@@ -39,6 +39,11 @@ describe Oystercard do
     oyster.top_up(30)
     oyster.deduct(20)
     expect(oyster.balance).to eq(10)
+  end 
+
+  it 'raises an error if overdrawn' do 
+    min_capacity = Oystercard::MIN_CAPACITY #ask for help with this?
+    expect{ subject.deduct(1) }.to raise_error("Minimum balance of #{min_capacity} exceeded")
   end 
 
 end 
