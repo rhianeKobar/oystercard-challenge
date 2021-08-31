@@ -7,9 +7,14 @@ class Oystercard
   end 
 
   def top_up(money)
+  fail "The maximum limit is £90" if #...
     @balance += money
 
   end 
   
   
 end  
+
+
+#fail if ... 
+#constant = maximum balance 
