@@ -14,8 +14,17 @@ describe Oystercard do
 
   it 'should respond to #top_up' do 
   oyster = Oystercard.new 
-  expect(oyster).to respond_to(:top_up)
+  expect(oyster).to respond_to(:top_up).with(1).argument
   end 
+
+  it 'it should #top_up the balance' do 
+  oyster = Oystercard.new
+  oyster.top_up(10)
+  expect(oyster.balance).to eq(10)
+  end 
+
+  
+
 
  
 
