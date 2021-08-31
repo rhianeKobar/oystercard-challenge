@@ -26,7 +26,7 @@ describe Oystercard do
   it 'should have a maximum limit' do 
     oyster = Oystercard.new
     oyster.top_up(100)
-    expect { subject }.to raise_error('The maximum limit is £90')
+    expect { oyster.top_up(100) }.to raise_error('The maximum limit is £90')
   end 
 
   
