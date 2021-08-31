@@ -26,7 +26,7 @@ describe Oystercard do
   it 'raises an error if the maximum balance is exceeded' do 
     max_capacity = Oystercard::MAX_CAPACITY
     subject.top_up(max_capacity)
-    expect{ subject.top_up(1) }.to raise_error('Maximum balance exceeded')
+    expect{ subject.top_up(1) }.to raise_error("Maximum balance of #{max_capacity} exceeded")
   end 
 
   
