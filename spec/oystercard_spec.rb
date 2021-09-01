@@ -54,6 +54,12 @@ describe Oystercard do
   it 'can #touch_in' do 
   oyster = Oystercard.new 
   expect(oyster).to respond_to(:touch_in)
-end 
+  end
+  
+  it 'can change the status of journey when #touch_in is called' do 
+  oyster = Oystercard.new 
+  oyster.touch_in 
+  expect(oyster.journey?).to eq(true)
+  end 
 
 end 
