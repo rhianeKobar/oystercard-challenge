@@ -46,9 +46,9 @@ describe Oystercard do
     expect{ subject.deduct(1) }.to raise_error("Minimum balance of #{min_capacity} exceeded")
   end 
 
-  it 'should respond to #touch_in' do
+  it 'should not initally be in journey' do
   oyster = Oystercard.new 
-  expect(oyster).to respond_to(:touch_in)
+  expect(oyster.journey?).to eq(false)
   end   
 
 end 

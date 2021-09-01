@@ -20,7 +20,8 @@ class Oystercard
     @balance -= money
   end 
 
-  def touch_in 
+  def journey?
+    false
   end 
   
   
