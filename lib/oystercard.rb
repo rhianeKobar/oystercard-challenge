@@ -4,11 +4,13 @@ class Oystercard
   MIN_CAPACITY = 0
 
   attr_reader :balance 
+  attr_accessor :in_use
   
   
 
   def initialize 
     @balance = 0
+    @in_use = false
   end 
 
   def top_up(money)
@@ -21,11 +23,20 @@ class Oystercard
     @balance -= money
   end 
 
-  def journey?
-    false
+  def in_journey?
+    if @in_use == false 
+      return false 
+    else 
+      return true 
+    end 
   end 
 
   def touch_in 
+    @in_use = true
+  end 
+
+  def touch_out
+    @in_use = false
   end 
 
   

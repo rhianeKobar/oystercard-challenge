@@ -46,20 +46,26 @@ describe Oystercard do
     expect{ subject.deduct(1) }.to raise_error("Minimum balance of #{min_capacity} exceeded")
   end 
 
-  it 'should not initally be in journey' do
-  oyster = Oystercard.new 
-  expect(oyster.journey?).to eq(false)
-  end   
+  it 'should change the value of @in_use to true' do 
+    oyster = Oystercard.new
+    oyster.touch_in 
+    expect(oyster.in_use).to eq(true)
+  end 
 
-  it 'can #touch_in' do 
-  oyster = Oystercard.new 
-  expect(oyster).to respond_to(:touch_in)
-  end
-  
-  it 'can change the status of journey when #touch_in is called' do 
-  oyster = Oystercard.new 
-  oyster.touch_in 
-  expect(oyster.journey?).to eq(true)
+  it 'should change the value of @in_use to false' do 
+    subject.touch_in 
+    subject.touch_out
+    expect(subject.in_use).to eq(false)
+  end 
+
+  it 'should tell us if the oystercard is in use' do
+    subject.touch_in
+    expect(subject.in_journey?).to eq(true)
+  end 
+
+  it 'should tell us if the oystercard is NOT in use' do 
+    subject.touch_out 
+    expect(subject.in_journey?).to eq(false)
   end 
 
 end 
