@@ -4,12 +4,9 @@ class Oystercard
   MIN_CAPACITY = 0
 
   attr_reader :balance 
-<<<<<<< HEAD
-=======
   attr_accessor :in_use
   
-  
->>>>>>> b83554b526b2077387819f55e1b4d841860768cc
+ 
 
   def initialize 
     @balance = 0
