@@ -41,31 +41,34 @@ describe Oystercard do
     expect(oyster.balance).to eq(10)
   end 
 
-  it 'raises an error if overdrawn' do 
-    min_capacity = Oystercard::MIN_CAPACITY #ask for help with this?
-    expect{ subject.deduct(1) }.to raise_error("Minimum balance of #{min_capacity} exceeded")
-  end 
-
   it 'should change the value of @in_use to true' do 
     oyster = Oystercard.new
+		oyster.top_up(20)
     oyster.touch_in 
     expect(oyster.in_use).to eq(true)
   end 
 
   it 'should change the value of @in_use to false' do 
-    subject.touch_in 
+    subject.top_up(20)
+		subject.touch_in 
     subject.touch_out
     expect(subject.in_use).to eq(false)
   end 
 
   it 'should tell us if the oystercard is in use' do
-    subject.touch_in
+		subject.top_up(20)
+		subject.touch_in
     expect(subject.in_journey?).to eq(true)
   end 
 
   it 'should tell us if the oystercard is NOT in use' do 
     subject.touch_out 
     expect(subject.in_journey?).to eq(false)
-  end 
+  end
+
+	it 'should throw an error when balance is less than 1' do 
+		oyster = Oystercard.new
+		expect{oyster.touch_in}.to raise_error("balance is below #{Oystercard::MIN_CAPACITY}")
+	end
 
 end 

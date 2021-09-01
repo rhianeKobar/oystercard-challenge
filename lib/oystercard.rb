@@ -1,12 +1,10 @@
 class Oystercard 
 
   MAX_CAPACITY = 90
-  MIN_CAPACITY = 0
+  MIN_CAPACITY = 1
 
   attr_reader :balance 
   attr_accessor :in_use
-  
- 
 
   def initialize 
     @balance = 0
@@ -14,12 +12,11 @@ class Oystercard
   end 
 
   def top_up(money)
-    fail "Maximum balance of #{MAX_CAPACITY} exceeded" if balance + money > MAX_CAPACITY
+    fail "Maximum balance of #{MAX_CAPACITY} exceeded" if @balance + money > MAX_CAPACITY
     @balance += money
   end 
 
   def deduct(money)
-    fail "Minimum balance of #{MIN_CAPACITY} exceeded" if balance - money < MIN_CAPACITY
     @balance -= money
   end 
 
@@ -32,6 +29,7 @@ class Oystercard
   end 
 
   def touch_in 
+    fail "balance is below #{MIN_CAPACITY}" if @balance < MIN_CAPACITY
     @in_use = true
   end 
 
