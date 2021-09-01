@@ -19,6 +19,9 @@ class Oystercard
     fail "Minimum balance of #{MIN_CAPACITY} exceeded" if balance - money < MIN_CAPACITY
     @balance -= money
   end 
+
+  def touch_in 
+  end 
   
   
 end  
