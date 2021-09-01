@@ -51,4 +51,9 @@ describe Oystercard do
   expect(oyster.journey?).to eq(false)
   end   
 
+  it 'can #touch_in' do 
+  oyster = Oystercard.new 
+  expect(oyster).to respond_to(:touch_in)
+end 
+
 end 

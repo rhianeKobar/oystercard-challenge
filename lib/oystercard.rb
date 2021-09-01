@@ -23,6 +23,9 @@ class Oystercard
   def journey?
     false
   end 
+
+  def touch_in 
+  end 
   
   
 end  
