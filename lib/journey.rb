@@ -1,6 +1,6 @@
-class Oystercard 
+class Journey
 
-  MAX_CAPACITY = 90
+	MAX_CAPACITY = 90
   MIN_FARE = 1
 
   attr_reader :balance 
@@ -13,12 +13,7 @@ class Oystercard
     @balance = 0
 		@journeys = {}
   end 
-
-  def top_up(money)
-    fail "Maximum balance of #{MAX_CAPACITY} exceeded" if @balance + money > MAX_CAPACITY
-    @balance += money
-  end  
-
+	
 	def deduct(money)
     @balance -= money
   end 
@@ -45,8 +40,5 @@ class Oystercard
   end 
 
   private :deduct
-end  
 
-
-#fail if ... 
-#constant = maximum balance 
+end
